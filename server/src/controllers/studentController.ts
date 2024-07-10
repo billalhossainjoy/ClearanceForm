@@ -26,14 +26,15 @@ const addStudent = asycHandler(async (req, res) => {
     Reason,
   } = req.body;
   if (
-    [Name, Technology, Roll, RegistrationNo, Session, Shift,Reason].some(
+    [Name, Technology, Roll, RegistrationNo, Session, Shift, Reason].some(
       (value) => value?.trim() == ""
     )
   )
     throw new ErrorApi(409, "All fields must be required");
-  
+
   const existingStudent = await Student.findOne({ Roll });
-  if (existingStudent) throw new ErrorApi(409, "Student already exists in database");
+  if (existingStudent)
+    throw new ErrorApi(409, "Student already exists in database");
 
   const stu = await Student.create({
     Name,
@@ -43,7 +44,7 @@ const addStudent = asycHandler(async (req, res) => {
     Session,
     Shift,
     Active,
-    BlockReason: Reason,
+    BlockReason: Active ? null : Reason,
   });
 
   if (!stu) throw new ErrorApi(404, "Student already exists in database");
@@ -127,7 +128,7 @@ const getStudent = asycHandler(async (req, res) => {
   if (!Roll) throw new ErrorApi(409, "Roll number is required");
   const user = await Student.findOne({ Roll });
   if (!user) throw new ErrorApi(404, "Student not found in database");
-  
+
   if (user.Active == false) throw new ErrorApi(408, "Student is blocked");
 
   res
