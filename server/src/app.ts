@@ -8,13 +8,7 @@ const app: Express = express();
 
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (origin === "https://clearance-form-client.vercel.app" || !origin) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: "*",
     credentials: true,
   })
 );
