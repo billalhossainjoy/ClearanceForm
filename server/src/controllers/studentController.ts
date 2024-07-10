@@ -26,11 +26,14 @@ const addStudent = asycHandler(async (req, res) => {
     Reason,
   } = req.body;
   if (
-    [Name, Technology, Roll, RegistrationNo, Session, Shift].some(
-      (value) => value.trim() == ""
+    [Name, Technology, Roll, RegistrationNo, Session, Shift,Reason].some(
+      (value) => value?.trim() == ""
     )
   )
     throw new ErrorApi(409, "All fields must be required");
+  
+  const existingStudent = await Student.findOne({ Roll });
+  if (existingStudent) throw new ErrorApi(409, "Student already exists in database");
 
   const stu = await Student.create({
     Name,
