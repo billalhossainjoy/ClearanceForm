@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { cn } from "../../util/util";
 import axios from "axios";
 import { config } from "../../config/config";
+import { AdminContext } from "../../Context/AdminContext";
 
 const BlockList = () => {
+  const { state } = useContext(AdminContext);
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -94,7 +96,11 @@ const BlockList = () => {
                   <th className={cn(styleTable.th, "hidden md:table-cell")}>
                     Session
                   </th>
-                  <th className={cn(styleTable.th, "hidden md:table-cell")}>
+                  <th
+                    className={cn(styleTable.th, "hidden md:table-cell", {
+                      "md:hidden": state.user.role == "staff",
+                    })}
+                  >
                     Delete
                   </th>
                   <th className={cn(styleTable.th)}>Block</th>
@@ -143,7 +149,8 @@ const BlockList = () => {
                         <td
                           className={cn(
                             styleTable.td,
-                            "py-1.5 hidden md:table-cell"
+                            "py-1.5 hidden md:table-cell",
+                            { "md:hidden": state.user.role == "staff" }
                           )}
                         >
                           <button

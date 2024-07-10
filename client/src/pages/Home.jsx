@@ -77,9 +77,9 @@ export default function Home() {
   }, [setValue, data.Roll, reset]);
 
   return (
-    <div className="flex justify-center h-screen">
+    <div className="flex justify-center bg-gray-200 h-screen">
       {/* <Form info={info} depertment={depertment} /> */}
-      <div className=" w-full bg-gray-200 h-full">
+      <div className=" w-full md:w-[70%] lg:w-[60%] h-full">
         <div className="">
           <h1 className="text-4xl p-2">Exemption Form </h1>
           <div></div>
@@ -170,12 +170,6 @@ export default function Home() {
               className="text-white w-28 rounded py-1 bg-sky-600 font-bold flex justify-center"
             >
               Reset
-            </button>
-            <button
-              onClick={() => navigator("/admin/dashboard")}
-              className="text-white w-28 rounded py-1 bg-sky-600 font-bold flex justify-center"
-            >
-              Admin
             </button>
           </div>
         </form>

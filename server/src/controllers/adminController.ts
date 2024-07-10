@@ -7,6 +7,7 @@ import asycHandler from "../util/asycHandler";
 const options = {
   httpOnly: true,
   maxAge: 12 * 60 * 60 * 1000,
+  secure: true,
   sameSite: "none",
 };
 
@@ -47,19 +48,19 @@ const userLogin = asycHandler(async (req: Request, res: Response) => {
 
   res
     .status(200)
-    .cookie("accessToken", token, {
-      httpOnly: true,
-      maxAge: 12 * 60 * 60 * 1000,
-      secure:true,
-      sameSite: "none",
-    })
+    .cookie("accessToken", token, options)
     .json(new ApiResponse(200, response, "logged in successfully"));
 });
 
 const logout = asycHandler((req, res) => {
   res
     .status(200)
-    .clearCookie("accessToken")
+    .clearCookie("accessToken", {
+      httpOnly: true,
+      maxAge: 12 * 60 * 60 * 1000,
+      secure: true,
+      sameSite: "none",
+    })
     .json(new ApiResponse(200, null, "logout success"));
 });
 

@@ -5,15 +5,18 @@ import Select from "../Select";
 import Wrapper from "../Wrapper";
 import axios from "axios";
 import { config } from "../../config/config";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ErrorBox from "./../ErrorBox";
+import { AdminContext } from "../../Context/AdminContext";
+import { useNavigate } from "react-router-dom";
 
 const NewEntry = () => {
+  const { state } = useContext(AdminContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
   const [data, setData] = useState([]);
-  
+
   const {
     register,
     handleSubmit,
@@ -57,7 +60,7 @@ const NewEntry = () => {
         setValue("roll", "");
         setValue("reg", "");
         setLoading(false);
-        setSuccess(true)
+        setSuccess(true);
         setTimeout(() => {
           setSuccess(false);
         }, 5000);
@@ -71,7 +74,14 @@ const NewEntry = () => {
         console.log(err);
       });
   };
-  console.log(error);
+  if (state.user.role == "staff") {
+    return (
+      <Wrapper>
+        <div>Only access for admin</div>
+      </Wrapper>
+    );
+  }
+
   return (
     <div>
       <Wrapper title={"Add Student:"}>

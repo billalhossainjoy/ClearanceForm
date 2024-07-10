@@ -3,12 +3,14 @@ import Input from "../Input";
 import Select from "../Select";
 import Button from "../Button";
 import Wrapper from "../Wrapper";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { cn } from "../../util/util";
 import { config } from "../../config/config";
+import { AdminContext } from "../../Context/AdminContext";
 
 const Accounts = () => {
+  const {state} = useContext(AdminContext);
   const {
     register,
     handleSubmit,
@@ -68,6 +70,14 @@ const Accounts = () => {
         fetchData();
       });
   };
+
+  if (state.user.role == "staff") {
+    return (
+      <Wrapper>
+        <div>Only access for admin</div>
+      </Wrapper>
+    );
+  }
 
   return (
     <>
