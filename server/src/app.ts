@@ -12,7 +12,6 @@ app.use(
       "https://clearance-form-client.vercel.app",
     ],
     credentials: true,
-    methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
