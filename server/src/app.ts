@@ -9,7 +9,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://clearance-form-server.vercel.app/",
+      "https://clearance-form-server.vercel.app",
     ],
     credentials: true,
     methods: ["GET", "POST"],
