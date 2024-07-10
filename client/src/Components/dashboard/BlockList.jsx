@@ -23,7 +23,6 @@ const BlockList = () => {
         setLoading(false);
       });
   };
-  console.log(students);
 
   useEffect(() => {
     fetchData();
@@ -52,7 +51,6 @@ const BlockList = () => {
       )
       .then((res) => {
         fetchData();
-        console.log(res.data);
       });
   };
   const unBlockHandler = (Roll) => {

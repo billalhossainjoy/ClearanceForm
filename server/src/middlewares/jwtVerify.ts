@@ -17,7 +17,6 @@ declare global {
 const jwtVeriry = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const token = req.cookies?.accessToken;
-    console.log(token)
     if (!token) throw new ErrorApi(401, "Unauthorized");
 
     const decoded = jwt.verify(token, config.jwtSecret) as JwtPayload;
