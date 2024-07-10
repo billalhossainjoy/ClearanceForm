@@ -51,7 +51,7 @@ const userLogin = asycHandler(async (req: Request, res: Response) => {
       httpOnly: true,
       maxAge: 12 * 60 * 60 * 1000,
       secure:true,
-      sameSite: "none",
+      sameSite: "lax",
     })
     .json(new ApiResponse(200, response, "logged in successfully"));
 });
