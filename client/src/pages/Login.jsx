@@ -9,6 +9,7 @@ import { useContext, useEffect, useState } from "react";
 import { AdminContext } from "../Context/AdminContext";
 import { useNavigate } from "react-router-dom";
 import ErrorBox from "../Components/ErrorBox";
+import { config } from "../config/config";
 
 const Login = () => {
   const { dispatch } = useContext(AdminContext);
@@ -24,7 +25,7 @@ const Login = () => {
 
   const submitHandler = async ({ email, password }) => {
     try {
-      const res = await axios.post(`${import.meta.env.VITE_SERVER}/api/login`, {
+      const res = await axios.post(`${config.server}/api/login`, {
         email,
         password,
       });

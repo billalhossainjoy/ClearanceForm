@@ -12,13 +12,14 @@ import Accounts from "./Components/dashboard/Accounts";
 import Password from "./Components/dashboard/Password";
 import Protected from "./Components/Protected";
 import { ContexProvider } from "./Context/Context";
+import { config } from "./config/config";
 
 const AppContent = () => {
   const { dispatch } = useContext(AdminContext);
 
   useEffect(() => {
     axios
-      .get("/server/api/admin/get")
+      .get(config.server + "/api/admin/get")
       .then((res) => {
         dispatch({ type: "LOGIN", payload: res.data.data });
       })

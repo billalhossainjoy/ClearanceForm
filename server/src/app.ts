@@ -2,7 +2,6 @@ import express, { Express } from "express";
 import studentRouter from "./router/router";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import Admin from "./models/adminModel";
 
 const app: Express = express();
 
