@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { cn } from "../../util/util";
-import Button from "../Button";
-import Wrapper from "../Wrapper";
 import axios from "axios";
 import { config } from "../../config/config";
 
