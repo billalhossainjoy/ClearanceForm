@@ -6,7 +6,11 @@ import Admin from "./models/adminModel";
 
 const app: Express = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://clearance-form-client.vercel.app/",
+  })
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
