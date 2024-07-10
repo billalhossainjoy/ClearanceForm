@@ -8,7 +8,8 @@ import { PDFDownloadLink } from "@react-pdf/renderer";
 import { useEffect, useState } from "react";
 import { cn } from "../util/util";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { config } from "../config/config";
 
 export default function Home() {
   const [fetched, setFetched] = useState({});
@@ -16,7 +17,7 @@ export default function Home() {
   const { register, watch, reset, setValue } = useForm();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const navigator = useNavigate()
+  const navigator = useNavigate();
 
   const data = {
     name: watch("name"),
@@ -37,7 +38,7 @@ export default function Home() {
       if (data.Roll && data.Roll.length >= 6) {
         setLoading(true);
         axios
-          .post(import.meta.env.VITE_SERVER + "/api/student/get", {
+          .post(config.server + "/api/student/get", {
             Roll: data.Roll,
           })
           .then((res) => {
@@ -77,7 +78,7 @@ export default function Home() {
 
   console.log(error?.response?.status);
 
-  console.log(fetched)
+  console.log(fetched);
 
   return (
     <div className="flex justify-center h-screen">
@@ -98,7 +99,9 @@ export default function Home() {
             <p className="text-sm text-red-500">This roll number is blocked</p>
           )}
           {error?.response?.status == 404 && (
-            <p className="text-sm text-blue-500">This roll number is not found</p>
+            <p className="text-sm text-blue-500">
+              This roll number is not found
+            </p>
           )}
           <Input label={"Registration No:"} {...register("reg")} />
           <Input label={"Name:"} {...register("name")} disabled={true} />
@@ -169,7 +172,7 @@ export default function Home() {
               Reset
             </button>
             <button
-              onClick={() => navigator('/admin/dashboard')}
+              onClick={() => navigator("/admin/dashboard")}
               className="text-white w-28 rounded py-1 bg-sky-600 font-bold flex justify-center"
             >
               Admin

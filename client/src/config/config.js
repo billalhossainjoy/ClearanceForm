@@ -1,3 +1,3 @@
 export const config = {
-  server: "http://localhost:2000",
+  server: import.meta.env.VITE_SERVER,
 };
