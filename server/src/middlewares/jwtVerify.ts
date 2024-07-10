@@ -18,6 +18,7 @@ const jwtVeriry = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const token = req.cookies?.accessToken;
     if (!token) throw new ErrorApi(401, "Unauthorized");
+    console.log('test')
 
     const decoded = jwt.verify(token, config.jwtSecret) as JwtPayload;
     if (!decoded) throw new ErrorApi(401, "Unauthorized user");

@@ -50,7 +50,8 @@ const userLogin = asycHandler(async (req: Request, res: Response) => {
     .cookie("accessToken", token, {
       httpOnly: true,
       maxAge: 12 * 60 * 60 * 1000,
-      sameSite: "none",
+      secure:true,
+      sameSite: "lax",
     })
     .json(new ApiResponse(200, response, "logged in successfully"));
 });

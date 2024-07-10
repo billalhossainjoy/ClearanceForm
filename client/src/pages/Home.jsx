@@ -76,10 +76,6 @@ export default function Home() {
     }
   }, [setValue, data.Roll, reset]);
 
-  console.log(error?.response?.status);
-
-  console.log(fetched);
-
   return (
     <div className="flex justify-center h-screen">
       {/* <Form info={info} depertment={depertment} /> */}
@@ -103,7 +99,11 @@ export default function Home() {
               This roll number is not found
             </p>
           )}
-          <Input label={"Registration No:"} {...register("reg")} />
+          <Input
+            label={"Registration No:"}
+            {...register("reg")}
+            disabled={true}
+          />
           <Input label={"Name:"} {...register("name")} disabled={true} />
           <Select
             disabled={true}
