@@ -25,10 +25,14 @@ const Login = () => {
 
   const submitHandler = async ({ email, password }) => {
     try {
-      const res = await axios.post(`${config.server}/api/login`, {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        `${config.server}/api/login`,
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      );
       dispatch({ type: "LOGIN", payload: res.data.data });
       navigator("/admin/dashboard/students");
     } catch (err) {

@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/server": {
-        target: "https://clearance-form-server.vercel.app/",
+        target: "http://localhost:2000",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/server/, ""),
       },
