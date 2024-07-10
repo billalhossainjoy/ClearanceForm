@@ -13,7 +13,9 @@ const StudentList = () => {
   const fetchData = () => {
     setLoading(true);
     axios
-      .get(config.server + "/api/student/getAllStudents")
+      .get(config.server + "/api/student/getAllStudents", {
+        withCredentials: true,
+      })
       .then((res) => {
         setStudents(res.data.data);
         setLoading(false);
@@ -40,18 +42,30 @@ const StudentList = () => {
 
   const deleteHandler = (Roll) => {
     axios
-      .post(config.server + "/api/student/deleteStudent", {
-        Roll,
-      })
+      .post(
+        config.server + "/api/student/deleteStudent",
+        {
+          Roll,
+        },
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         fetchData();
       });
   };
   const blockHandler = (Roll) => {
     axios
-      .patch(config.server + "/api/student/blockStudent", {
-        Roll,
-      })
+      .patch(
+        config.server + "/api/student/blockStudent",
+        {
+          Roll,
+        },
+        {
+          withCredentials: true,
+        }
+      )
       .then(() => {
         fetchData();
       });

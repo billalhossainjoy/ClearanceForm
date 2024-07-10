@@ -23,10 +23,16 @@ const Password = () => {
       return;
     }
     axios
-      .post(config.server + "/api/admin/changePass", {
-        oldPass: oldPassword,
-        newPass: password,
-      })
+      .post(
+        config.server + "/api/admin/changePass",
+        {
+          oldPass: oldPassword,
+          newPass: password,
+        },
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         console.log(res.data);
         if (res.data.statusCode === 200) navigator("/admin/dashboard");

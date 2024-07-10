@@ -19,7 +19,9 @@ const AppContent = () => {
 
   useEffect(() => {
     axios
-      .get(config.server + "/api/admin/get")
+      .get(config.server + "/api/admin/get", {
+        withCredentials: true,
+      })
       .then((res) => {
         dispatch({ type: "LOGIN", payload: res.data.data });
       })

@@ -22,7 +22,9 @@ const Accounts = () => {
   const fetchData = () => {
     setLoading(true);
     axios
-      .get(config.server + +"/api/admin/allAdmins")
+      .get(config.server + "/api/admin/allAdmins", {
+        withCredentials: true,
+      })
       .then((res) => {
         setAdmins(res.data.data);
         setLoading(false);
@@ -39,11 +41,17 @@ const Accounts = () => {
 
   const submitHandler = ({ email, role }) => {
     axios
-      .post(config.server + "/api/admin/user", {
-        email: email.toLowerCase(),
-        password: email,
-        role,
-      })
+      .post(
+        config.server + "/api/admin/user",
+        {
+          email: email.toLowerCase(),
+          password: email,
+          role,
+        },
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         setError(null);
         fetchData();
@@ -53,7 +61,9 @@ const Accounts = () => {
 
   const deleteUserHandler = (email) => {
     axios
-      .delete(config.server + "/api/admin/deleteUser/" + email)
+      .delete(config.server + "/api/admin/deleteUser/" + email, {
+        withCredentials: true,
+      })
       .then((res) => {
         fetchData();
       });

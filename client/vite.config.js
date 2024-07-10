@@ -6,11 +6,11 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/server": {
-        target: "http://localhost:2000",
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/server/, ""),
-      },
+      // "/server": {
+      //   target: "http://localhost:2000",
+      //   changeOrigin: true,
+      //   rewrite: (path) => path.replace(/^\/server/, ""),
+      // },
     },
   },
 });

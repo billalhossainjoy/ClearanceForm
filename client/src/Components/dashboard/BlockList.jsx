@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { cn } from "../../util/util";
-import Button from "../Button";
-import Wrapper from "../Wrapper";
 import axios from "axios";
 import { config } from "../../config/config";
 
@@ -13,7 +11,9 @@ const BlockList = () => {
   const fetchData = () => {
     setLoading(true);
     axios
-      .get(config.server + "/api/student/getAllStudents")
+      .get(config.server + "/api/student/getAllStudents", {
+        withCredentials: true,
+      })
       .then((res) => {
         setStudents(res.data.data);
         setLoading(false);
@@ -41,9 +41,15 @@ const BlockList = () => {
 
   const deleteHandler = (Roll) => {
     axios
-      .post("/server/api/student/deleteStudent", {
-        Roll,
-      })
+      .post(
+        config.server + "/api/student/deleteStudent",
+        {
+          Roll,
+        },
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         fetchData();
         console.log(res.data);
@@ -51,9 +57,15 @@ const BlockList = () => {
   };
   const unBlockHandler = (Roll) => {
     axios
-      .patch("/server/api/student/unBlockEntry", {
-        Roll,
-      })
+      .patch(
+        config.server + "/api/student/unBlockEntry",
+        {
+          Roll,
+        },
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         fetchData();
       });
