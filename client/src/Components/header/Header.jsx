@@ -11,7 +11,9 @@ const Header = () => {
   const { isMenuActive, setIsMenuActive } = useContext(Context);
   const { dispatch } = useContext(AdminContext);
   const logouthandler = () => {
-    axios.get(config.server + "/api/admin/logout").then(() => {
+    axios.get(config.server + "/api/admin/logout", {
+      withCredentials:true
+    }).then(() => {
       dispatch({ type: "LOGOUT" });
     });
   };
