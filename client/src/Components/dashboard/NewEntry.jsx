@@ -4,6 +4,7 @@ import Input from "../Input";
 import Select from "../Select";
 import Wrapper from "../Wrapper";
 import axios from "axios";
+import { config } from "../../config/config";
 
 const NewEntry = () => {
   const {
@@ -14,7 +15,7 @@ const NewEntry = () => {
 
   const submitHandler = ({ roll, reg, name, tech, session, shift, active }) => {
     axios
-      .post("/server/api/student/newStudent", {
+      .post(config.server + "/api/student/newStudent", {
         Name: name,
         Technology: tech,
         Roll: roll,

@@ -5,6 +5,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { CircleAlertIcon } from "lucide-react";
+import { config } from "../../config/config";
 
 const Password = () => {
   const navigator = useNavigate();
@@ -22,7 +23,7 @@ const Password = () => {
       return;
     }
     axios
-      .post("/server/api/admin/changePass", {
+      .post(config.server + "/api/admin/changePass", {
         oldPass: oldPassword,
         newPass: password,
       })
@@ -34,7 +35,7 @@ const Password = () => {
         setError(err.response.status);
         console.log(err);
         setTimeout(() => {
-          setError(null)
+          setError(null);
         }, 3000);
       });
   };

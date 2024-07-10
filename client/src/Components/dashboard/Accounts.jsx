@@ -6,6 +6,7 @@ import Wrapper from "../Wrapper";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { cn } from "../../util/util";
+import { config } from "../../config/config";
 
 const Accounts = () => {
   const {
@@ -21,7 +22,7 @@ const Accounts = () => {
   const fetchData = () => {
     setLoading(true);
     axios
-      .get(import.meta.env.VITE_SERVER + "/api/admin/allAdmins")
+      .get(config.server + +"/api/admin/allAdmins")
       .then((res) => {
         setAdmins(res.data.data);
         setLoading(false);
@@ -38,7 +39,7 @@ const Accounts = () => {
 
   const submitHandler = ({ email, role }) => {
     axios
-      .post(import.meta.env.VITE_SERVER + "/api/admin/user", {
+      .post(config.server + "/api/admin/user", {
         email: email.toLowerCase(),
         password: email,
         role,
@@ -51,9 +52,11 @@ const Accounts = () => {
   };
 
   const deleteUserHandler = (email) => {
-    axios.delete(import.meta.env.VITE_SERVER + "/api/admin/deleteUser/" + email).then((res) => {
-      fetchData();
-    });
+    axios
+      .delete(config.server + "/api/admin/deleteUser/" + email)
+      .then((res) => {
+        fetchData();
+      });
   };
 
   return (

@@ -3,6 +3,7 @@ import { cn } from "../../util/util";
 import Button from "../Button";
 import Wrapper from "../Wrapper";
 import axios from "axios";
+import { config } from "../../config/config";
 
 const StudentList = () => {
   const [students, setStudents] = useState([]);
@@ -12,7 +13,7 @@ const StudentList = () => {
   const fetchData = () => {
     setLoading(true);
     axios
-      .get("/server/api/student/getAllStudents")
+      .get(config.server + "/api/student/getAllStudents")
       .then((res) => {
         setStudents(res.data.data);
         setLoading(false);
@@ -39,7 +40,7 @@ const StudentList = () => {
 
   const deleteHandler = (Roll) => {
     axios
-      .post("/server/api/student/deleteStudent", {
+      .post(config.server + "/api/student/deleteStudent", {
         Roll,
       })
       .then((res) => {
@@ -48,7 +49,7 @@ const StudentList = () => {
   };
   const blockHandler = (Roll) => {
     axios
-      .patch("/server/api/student/blockStudent", {
+      .patch(config.server + "/api/student/blockStudent", {
         Roll,
       })
       .then(() => {

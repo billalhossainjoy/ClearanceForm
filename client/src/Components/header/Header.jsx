@@ -5,12 +5,13 @@ import { cn } from "../../util/util";
 import { Context } from "../../Context/Context";
 import axios from "axios";
 import { AdminContext } from "../../Context/AdminContext";
+import { config } from "../../config/config";
 
 const Header = () => {
   const { isMenuActive, setIsMenuActive } = useContext(Context);
   const { dispatch } = useContext(AdminContext);
   const logouthandler = () => {
-    axios.get("/server/api/admin/logout").then(() => {
+    axios.get(config.server + "/api/admin/logout").then(() => {
       dispatch({ type: "LOGOUT" });
     });
   };

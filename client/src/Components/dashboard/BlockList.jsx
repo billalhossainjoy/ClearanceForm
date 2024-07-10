@@ -3,6 +3,7 @@ import { cn } from "../../util/util";
 import Button from "../Button";
 import Wrapper from "../Wrapper";
 import axios from "axios";
+import { config } from "../../config/config";
 
 const BlockList = () => {
   const [students, setStudents] = useState([]);
@@ -12,7 +13,7 @@ const BlockList = () => {
   const fetchData = () => {
     setLoading(true);
     axios
-      .get("/server/api/student/getAllStudents")
+      .get(config.server + "/api/student/getAllStudents")
       .then((res) => {
         setStudents(res.data.data);
         setLoading(false);

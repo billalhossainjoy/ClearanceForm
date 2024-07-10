@@ -7,7 +7,7 @@ import asycHandler from "../util/asycHandler";
 const options = {
   httpOnly: true,
   maxAge: 12 * 60 * 60 * 1000,
-  secure: true,
+  // secure: true,
 };
 
 const createAdmin = asycHandler(async (req, res) => {
@@ -47,7 +47,7 @@ const userLogin = asycHandler(async (req: Request, res: Response) => {
 
   res
     .status(200)
-    .cookie("accessToken", token, options)
+    .cookie("accessToken", token) //, options
     .json(new ApiResponse(200, response, "logged in successfully"));
 });
 
