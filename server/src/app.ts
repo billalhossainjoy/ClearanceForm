@@ -9,6 +9,7 @@ const app: Express = express();
 app.use(
   cors({
     origin: "https://clearance-form-client.vercel.app/",
+    credentials: true,
   })
 );
 
