@@ -83,7 +83,6 @@ const Login = () => {
               type="password"
               {...register("password", {
                 required: "Please enter your password",
-                minLength: 8,
               })}
             />
             {error && <ErrorBox>Invalid email or password.</ErrorBox>}

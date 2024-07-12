@@ -6,15 +6,18 @@ import { Context } from "../../Context/Context";
 import axios from "axios";
 import { AdminContext } from "../../Context/AdminContext";
 import { config } from "../../config/config";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const { isMenuActive, setIsMenuActive } = useContext(Context);
   const { dispatch } = useContext(AdminContext);
+  const navigator = useNavigate()
   const logouthandler = () => {
     axios.get(config.server + "/api/admin/logout", {
       withCredentials:true
     }).then(() => {
       dispatch({ type: "LOGOUT" });
+      navigator("/login")
     });
   };
 
