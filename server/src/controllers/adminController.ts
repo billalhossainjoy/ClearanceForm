@@ -48,7 +48,12 @@ const userLogin = asycHandler(async (req: Request, res: Response) => {
 
   res
     .status(200)
-    .cookie("accessToken", token, options)
+    .cookie("accessToken", token, {
+      httpOnly: true,
+      maxAge: 12 * 60 * 60 * 1000,
+      secure: true,
+      sameSite: "none",
+    })
     .json(new ApiResponse(200, response, "logged in successfully"));
 });
 
@@ -73,7 +78,6 @@ const changePassword = asycHandler(async (req, res) => {
   const { oldPass, newPass } = req.body;
   const matched = req.user?.isValidPassword(oldPass);
   if (!matched) throw new ErrorApi(401, "Invalid old password");
-
   await req.user?.updateOne({ password: newPass });
 
   res
