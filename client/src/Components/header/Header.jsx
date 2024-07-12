@@ -1,6 +1,6 @@
 import { CircleX, LogOut, MenuIcon } from "lucide-react";
 import gaiLogo from "../../assets/gai.jpg";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { cn } from "../../util/util";
 import { Context } from "../../Context/Context";
 import axios from "axios";

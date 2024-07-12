@@ -10,8 +10,10 @@ import { AdminContext } from "../Context/AdminContext";
 import { useNavigate } from "react-router-dom";
 import ErrorBox from "../Components/ErrorBox";
 import { config } from "../config/config";
+import { cn } from "../util/util";
 
 const Login = () => {
+  const [loading, setLoading] = useState(false);
   const { dispatch } = useContext(AdminContext);
   const [error, setError] = useState(null);
   const navigator = useNavigate();
@@ -25,6 +27,7 @@ const Login = () => {
 
   const submitHandler = async ({ email, password }) => {
     try {
+      setLoading(true)
       const res = await axios.post(
         `${config.server}/api/login`,
         {
@@ -34,8 +37,10 @@ const Login = () => {
         { withCredentials: true }
       );
       dispatch({ type: "LOGIN", payload: res.data.data });
+      setLoading(false);
       navigator("/admin/dashboard/students");
     } catch (err) {
+      setLoading(false);
       console.log(err);
       setError(err);
       dispatch({ type: "LOGOUT" });
@@ -82,7 +87,9 @@ const Login = () => {
               })}
             />
             {error && <ErrorBox>Invalid email or password.</ErrorBox>}
-            <Button className="bg-sky-600">Login</Button>
+            <Button className={cn("bg-sky-600", { " bg-gray-500": loading })} disable={loading}>
+              {loading ? "loading..." : "Login"}
+            </Button>
           </form>
         </div>
       </div>
