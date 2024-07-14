@@ -5,7 +5,7 @@ import Button from "../Button";
 import Wrapper from "../Wrapper";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { cn } from "../../util/util";
+import { capitalize, cn } from "../../util/util";
 import { config } from "../../config/config";
 import { AdminContext } from "../../Context/AdminContext";
 
@@ -138,7 +138,7 @@ const Accounts = () => {
                     >
                       <div className="flex justify-between items-center">
                         <p>
-                          {admin.email} ({admin.role})
+                          {admin.email} ({capitalize(admin.role)})
                         </p>
                         <div>
                           <Button
