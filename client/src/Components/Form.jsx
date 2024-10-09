@@ -161,6 +161,8 @@ const styles = StyleSheet.create({
   },
 });
 
+
+
 export default function Form({ info, depertment = [] }) {
   return (
     <Document>
@@ -274,7 +276,7 @@ export default function Form({ info, depertment = [] }) {
                     <Text style={styles.tableCell}>{""}</Text>
                   </View>
                   <View style={styles.tableColSign}>
-                    <Text style={styles.tableCell}>{""}</Text>
+                    <Text style={styles.tableCell}>{dept.signeture}</Text>
                   </View>
                 </View>
               ))}

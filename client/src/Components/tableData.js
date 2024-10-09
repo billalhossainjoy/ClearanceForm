@@ -1,3 +1,5 @@
+import ciSir from "/image.png";
+
 export const info = {
   name: "",
   technology: "",
@@ -13,7 +15,7 @@ export const depertment = [
   { id: "ক", depertment: "অফসেট প্রিন্টিং ল্যাব" },
   { id: "খ", depertment: "লেটার প্রেস প্রিন্টিং ল্যাব" },
   { id: "গ", depertment: "গ্রাভিয়ার প্রিন্টিং ল্যাব" },
-  { id: "ঘ", depertment: "ফ্লেক্সে গ্রাফিক প্রিন্টিং ল্যাব" },
+  { id: "ঘ", depertment: "ফ্লেক্সে গ্রাফিক প্রিন্টিং ল্যাব", signeture: ciSir },
   { id: "ঙ", depertment: "বাইন্ডিং ফিনিশিং ল্যাব" },
   { id: "চ", depertment: "ডিজিটাল প্রিন্টিং ল্যাব" },
   { id: "ছ", depertment: "প্লেট মেকিং ল্যাব" },
