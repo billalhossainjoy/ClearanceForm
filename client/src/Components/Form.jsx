@@ -1,4 +1,5 @@
 import font from "../assets/noto.ttf";
+import ciSir from "/image.png";
 import {
   Document,
   Font,
@@ -279,7 +280,8 @@ export default function Form({ info, depertment = [] }) {
                   <View style={styles.tableColSign}>
                     <Text style={styles.tableCell}>
                       <Image
-                        src={import("./image.png")}
+                        style={{width: "100px", height: "40px"}}
+                        src={ciSir}
                       />
                     </Text>
                   </View>
