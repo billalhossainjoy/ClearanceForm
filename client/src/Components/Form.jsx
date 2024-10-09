@@ -279,7 +279,7 @@ export default function Form({ info, depertment = [] }) {
                   <View style={styles.tableColSign}>
                     <Text style={styles.tableCell}>
                       <Image
-                        src={import("./assets/sample.jpg")}
+                        src={import("./image.png")}
                       />
                     </Text>
                   </View>
