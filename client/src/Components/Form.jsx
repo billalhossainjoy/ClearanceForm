@@ -2,6 +2,7 @@ import font from "../assets/noto.ttf";
 import {
   Document,
   Font,
+  Image,
   Page,
   StyleSheet,
   Text,
@@ -276,7 +277,7 @@ export default function Form({ info, depertment = [] }) {
                     <Text style={styles.tableCell}>{""}</Text>
                   </View>
                   <View style={styles.tableColSign}>
-                    <Text style={styles.tableCell}>{""}</Text>
+                    <Text style={styles.tableCell}><Image src={dept.signeture}/></Text>
                   </View>
                 </View>
               ))}
