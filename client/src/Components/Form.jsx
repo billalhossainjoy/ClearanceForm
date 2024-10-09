@@ -279,7 +279,7 @@ export default function Form({ info, depertment = [] }) {
                   </View>
                   <View style={styles.tableColSign}>
                     <Text style={styles.tableCell}>
-                      <Image style={{ width: "50px" }} src={dept.signeture} />
+                      <Image style={{ width: "50px" ,height: "20px"}} src={dept.signeture} />
                     </Text>
                   </View>
                 </View>
