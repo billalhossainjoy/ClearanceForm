@@ -277,7 +277,7 @@ export default function Form({ info, depertment = [] }) {
                     <Text style={styles.tableCell}>{""}</Text>
                   </View>
                   <View style={styles.tableColSign}>
-                    <Text style={styles.tableCell}><Image src={dept.signeture}/></Text>
+                    <Text style={styles.tableCell}></Text>
                   </View>
                 </View>
               ))}
